@@ -17,19 +17,27 @@
 
     <style>
         .colourcircle {
-            height: 8em;
-            width: 8em;
+            height: 7em;
+            width: 7em;
             border: 1px solid grey;
             border-radius: 50%;
-            box-shadow: -10px -10px 33px 15px rgba(255, 255, 255, 0.2) inset;
+            box-shadow: -10px -10px 33px 15px rgba(255, 255, 255, 0.2) inset, 0 0 40px -10px rgb(0 0 0 / 70%);
+        }
+
+        .largecolourcircle {
+            height: 16em;
+            width: 16em;
+            border: 1px solid grey;
+            border-radius: 50%;
+            box-shadow: -10px -10px 33px 15px rgba(255, 255, 255, 0.2) inset, 0 0 40px -10px rgb(0 0 0 / 70%);
         }
 
         .smallcolourcircle {
             height: 2em;
             width: 2em;
             margin: 0.1em;
-            border-radius: 0.;
             border: 1px solid grey;
+            box-shadow: -10px -10px 12px -2px rgb(255 255 255 / 20%) inset, 0 0 10px -5px rgb(0 0 0 / 70%);
         }
     </style>
 </head>
@@ -37,20 +45,24 @@
 <body class="vh-100">
 
     <div id="app" class="h-100 d-flex justify-content-center align-items-center">
-        <div class="d-flex">
-            <div class="d-flex flex-column align-items-center">
-                <div class="colourcircle m-3" :style="{'background-color': colour1}"></div>
-                <div class="d-flex flex-wrap justify-content-center" style="width: 10em;">
-                    <div class="smallcolourcircle" v-for="colour in palette" :style="{'background-color': colour}" @click="colour1 = colour"></div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+
+            <div class="largecolourcircle m-3" :style="{'background-color': mixColours(colour1, colour2)}"></div>
+    
+            <div class="d-flex">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="colourcircle m-3" :style="{'background-color': colour1}"></div>
+                    <div class="d-flex flex-wrap justify-content-center" style="width: 10em;">
+                        <div class="smallcolourcircle" v-for="colour in palette" :style="{'background-color': colour}" @click="colour1 = colour"></div>
+                    </div>
                 </div>
-            </div>
-    
-            <div class="colourcircle m-3" :style="{'background-color': mixColours(colour1, colour2)}"></div>
-    
-            <div class="d-flex flex-column align-items-center">
-                <div class="colourcircle m-3" :style="{'background-color': colour2}"></div>
-                <div class="d-flex flex-wrap justify-content-center" style="width: 10em;">
-                    <div class="smallcolourcircle" v-for="colour in palette" :style="{'background-color': colour}" @click="colour2 = colour"></div>
+        
+                
+                <div class="d-flex flex-column align-items-center">
+                    <div class="colourcircle m-3" :style="{'background-color': colour2}"></div>
+                    <div class="d-flex flex-wrap justify-content-center" style="width: 10em;">
+                        <div class="smallcolourcircle" v-for="colour in palette" :style="{'background-color': colour}" @click="colour2 = colour"></div>
+                    </div>
                 </div>
             </div>
         </div>
